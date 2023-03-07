@@ -20,16 +20,31 @@ function getDrink(){
       document.querySelector('#toDo').innerText = data.drinks[0].strInstructions
 
       //set ingridients:
-      document.querySelector('#inst').innerText = data.drinks[0].strIngredient1
 
+      const ingredients = [];
+
+      for (let i = 1; i <= 15; i++){
+        //all ingrideients (api shows max of 15)
+        const ingredient = data.drinks[0]['strIngredient{i}'];
+        if (ingredient){
+          ingredients.push(`${ingredient}`)
+        }
+      }
+      const ul = document.querySelector('#inst');
+      ul.innerHTML = "";
+      //clears previous list
+
+      for (let i = 0; i < ingredients.length; i++) {
+        const li = document.createElement("li");
+        li.innerText = ingredients[i]
+        ul.appendChild(li);
+      }
       //   let ingridents = data.drinks.strIngredient[+i]
       // for( i = 0; i= ingridents.length; i++ ){
       //   if(ingridents === null){
       //   return ""
       //   }
       // }
-
-      
 
     })
     .catch(err => {
