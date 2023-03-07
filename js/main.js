@@ -20,12 +20,11 @@ function getDrink(){
       document.querySelector('#toDo').innerText = data.drinks[0].strInstructions
 
       //set ingridients:
-
       const ingredients = [];
 
       for (let i = 1; i <= 15; i++){
         //all ingrideients (api shows max of 15)
-        const ingredient = data.drinks[0]['strIngredient{i}'];
+        const ingredient = data.drinks[0][`strIngredient${i}`];
         if (ingredient){
           ingredients.push(`${ingredient}`)
         }
@@ -45,7 +44,6 @@ function getDrink(){
       //   return ""
       //   }
       // }
-
     })
     .catch(err => {
         console.log(`error ${err}`)
